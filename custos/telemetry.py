@@ -9,6 +9,10 @@ import json
 import os
 import uuid
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 _rd = None
 if os.getenv("RAINDROP_WRITE_KEY"):
     try:
