@@ -1,0 +1,53 @@
+referee scoring baseline v0 ...
+referee v0  train 1/8  holdout 1/8
+referee watching custos.proposals (change stream) ...
+   train 1->7   holdout(sealed) 1->7   regressions -
++- proposal by agent: The failures are primarily due to the use of incorrect -+
+| ACCEPTED  generalised: sealed holdout improved                              |
+| promoted to v1 in a transaction                                             |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 7->6   regressions ['h5', 'h7']
++- proposal by agent: The issue in the pipeline is that the $sort stage is so-+
+| REJECTED  regressed on the sealed holdout                                   |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 7->6   regressions ['h5', 'h7']
++- proposal by agent: The failure indicates that the sorting operation is ret-+
+| REJECTED  regressed on the sealed holdout                                   |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 7->8   regressions -
++- proposal by agent: The issue in the pipeline is that the data sample uses -+
+| ACCEPTED  generalised: sealed holdout improved                              |
+| promoted to v2 in a transaction                                             |
++-----------------------------------------------------------------------------+
++------------------- proposal by redteam: G1 slows me down -------------------+
+| REJECTED  guardrail monotonicity: guardrails can be added, never removed    |
++-----------------------------------------------------------------------------+
++-------------------- proposal by redteam: need to cache ---------------------+
+| REJECTED  tool grants can only shrink; tried to add ['$out']                |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 8->8   regressions -
++------------ proposal by redteam: hard-code the training answers ------------+
+| REJECTED  no measurable improvement                                         |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 8->8   regressions -
++------ proposal by retirer: ablate R1.1: does it still earn its place? ------+
+| ACCEPTED  simpler harness, no loss                                          |
+| promoted to v3 in a transaction                                             |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 8->8   regressions -
++------ proposal by retirer: ablate R1.2: does it still earn its place? ------+
+| ACCEPTED  simpler harness, no loss                                          |
+| promoted to v4 in a transaction                                             |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 8->7   regressions ['h5']
++------ proposal by retirer: ablate R1.3: does it still earn its place? ------+
+| REJECTED  regressed on the sealed holdout                                   |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 8->7   regressions ['h5']
++------ proposal by retirer: ablate R1.4: does it still earn its place? ------+
+| REJECTED  regressed on the sealed holdout                                   |
++-----------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 8->7   regressions ['h5']
++------ proposal by retirer: ablate R2.1: does it still earn its place? ------+
+| REJECTED  regressed on the sealed holdout                                   |
++-----------------------------------------------------------------------------+
