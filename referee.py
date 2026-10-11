@@ -12,7 +12,9 @@ from rich import print
 from rich.panel import Panel
 
 from custos.db import films, referee_db
+from custos import telemetry
 from custos.harness import evaluate
+from custos.llm import MODEL
 
 db = referee_db()
 client = db.client
@@ -144,6 +146,7 @@ def judge(p):
     db.metrics.insert_one({"ts": now(), "meta": {"version": v, "event": verdict},
                            "train": (s or parent["scores"])["train"], "holdout": (s or parent["scores"])["holdout"],
                            "rules": len((cand or parent)["rules"])})
+    telemetry.proposal(p, verdict, reason, parent["version"], v, s, parent["scores"], MODEL)
     color = "green" if verdict == "accepted" else "red"
     print(Panel(f"[bold {color}]{verdict.upper()}[/]  {reason}" +
                 (f"\npromoted to v{cand['version']} in a transaction" if verdict == "accepted" else ""),

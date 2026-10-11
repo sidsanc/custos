@@ -54,6 +54,7 @@ Optimizers mutate harnesses. Guardrail vendors freeze them. Observability tools 
 | Removal is a first-class change | Removal-only proposals are promoted when the score holds |
 | Promote and roll back atomically | Multi-document **transaction** |
 | A hard metric over time per harness version | **Time-series** collection `metrics` |
+| The self-improvement history is observable in production | **Raindrop**: every proposal is an AI event with a promoted/rejected signal, and blocked tampering is flagged (`custos/telemetry.py`, set `RAINDROP_WRITE_KEY`) |
 
 The task: natural language to a MongoDB aggregation over a deliberately quirky `films` collection
 (`year` stored as a string, lowercase genres, runtime in seconds, ISO country codes). Scoring uses

@@ -8,6 +8,7 @@ import time
 from rich import print
 from rich.rule import Rule
 
+from custos import telemetry
 from custos.db import agent_db
 
 db = agent_db()
@@ -19,7 +20,9 @@ def attempt(title, fn):
         out = fn()
         print(f"  [cyan]passed the database layer, reached the referee ->[/] {out}")
     except Exception as e:  # noqa: BLE001
-        print(f"  [green]BLOCKED by Atlas:[/] {type(e).__name__}: {str(e).split(', full error')[0].split(', ordered')[0].split(' lsid')[0][:120]}")
+        msg = f"{type(e).__name__}: {str(e).split(', full error')[0].split(', ordered')[0].split(' lsid')[0][:120]}"
+        print(f"  [green]BLOCKED by Atlas:[/] {msg}")
+        telemetry.blocked(title, msg)
 
 
 def verdict(pid):
