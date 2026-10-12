@@ -1,0 +1,4 @@
+harness v1: 1 rules
+  KEPT    R1.1  born_from=['v0-t1', 'v0-t2', 'v0-t3']  "Ensure that the expected results use the 
+correct field names and types"  (regressed on the sealed holdout)
+harness v1: 1 -> 1 rules

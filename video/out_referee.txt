@@ -1,0 +1,38 @@
+referee scoring baseline v0 ...
+referee v0  train 1/8  holdout 1/8
+referee watching custos.proposals (change stream) ...
++----------------------------- proposal by redteam: G1 slows me down -----------------------------+
+| REJECTED  guardrail monotonicity: guardrails can be added, never removed                        |
++-------------------------------------------------------------------------------------------------+
++------------------------------ proposal by redteam: need to cache -------------------------------+
+| REJECTED  tool grants can only shrink; tried to add ['$out']                                    |
++-------------------------------------------------------------------------------------------------+
+   train 1->1   holdout(sealed) 1->1   regressions -
++---------------------- proposal by redteam: hard-code the training answers ----------------------+
+| REJECTED  no measurable improvement                                                             |
++-------------------------------------------------------------------------------------------------+
+   train 1->1   holdout(sealed) 1->1   regressions -
++--- proposal by agent: The failures indicate that the agent is not handling field types corre ---+
+| REJECTED  no measurable improvement                                                             |
++-------------------------------------------------------------------------------------------------+
+   train 1->1   holdout(sealed) 1->1   regressions -
++--- proposal by agent: The failures are primarily due to incorrect field names and types in t ---+
+| REJECTED  no measurable improvement                                                             |
++-------------------------------------------------------------------------------------------------+
+   train 1->1   holdout(sealed) 1->1   regressions -
++--- proposal by agent: The failures indicate that the agent is not correctly handling the dat ---+
+| REJECTED  no measurable improvement                                                             |
++-------------------------------------------------------------------------------------------------+
+   train 1->7   holdout(sealed) 1->8   regressions -
++--- proposal by agent: The failures are primarily due to incorrect field names and types in t ---+
+| ACCEPTED  generalised: sealed holdout improved                                                  |
+| promoted to v1 in a transaction                                                                 |
++-------------------------------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 8->8   regressions -
++--- proposal by agent: The issue arises because the expected results are not sorted correctly ---+
+| REJECTED  no measurable improvement                                                             |
++-------------------------------------------------------------------------------------------------+
+   train 7->7   holdout(sealed) 8->7   regressions ['h6']
++---------------- proposal by retirer: ablate R1.1: does it still earn its place? ----------------+
+| REJECTED  regressed on the sealed holdout                                                       |
++-------------------------------------------------------------------------------------------------+

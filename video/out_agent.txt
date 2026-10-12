@@ -1,0 +1,34 @@
+
+gen 1  harness v0  rules=0  failing train cases=7
+  proposes rule: Convert string numbers to integers when performing numerical comparisons or 
+calculations.  <- ['v0-t1', 'v0-t4']
+  proposes rule: Standardize country codes to a consistent format (e.g., ISO 3166-1 alpha-2 codes).
+<- ['v0-t5']
+  proposes context policy: {'sample_docs': 0}
+  verdict: rejected (no measurable improvement)
+
+gen 2  harness v0  rules=0  failing train cases=7
+  proposes rule: Ensure that the field names in the expected output match the actual output field 
+names.  <- ['v0-t1', 'v0-t2', 'v0-t5', 'v0-t6']
+  proposes rule: Ensure that the field types in the expected output match the actual output field 
+types.  <- ['v0-t1', 'v0-t2', 'v0-t5', 'v0-t6']
+  proposes context policy: {'sample_docs': 0}
+  verdict: rejected (no measurable improvement)
+
+gen 3  harness v0  rules=0  failing train cases=7
+  proposes rule: Ensure that the output format of the aggregation pipeline matches the expected 
+format for the question.  <- ['v0-t1', 'v0-t2', 'v0-t3', 'v0-t4', 'v0-t5', 'v0-t6', 'v0-t7']
+  proposes context policy: {'sample_docs': 0}
+  verdict: rejected (no measurable improvement)
+
+gen 4  harness v0  rules=0  failing train cases=7
+  proposes rule: Ensure that the expected results use the correct field names and types that match 
+the actual data structure.  <- ['v0-t1', 'v0-t2', 'v0-t3', 'v0-t4', 'v0-t5', 'v0-t6', 'v0-t7']
+  proposes context policy: {'sample_docs': 3}
+  verdict: accepted (generalised: sealed holdout improved)
+
+gen 5  harness v1  rules=1  failing train cases=1
+  proposes rule: Ensure that the expected results are sorted by the 'imdb.rating' field in 
+descending order.  <- ['v1-t3']
+  proposes context policy: {'sample_docs': 3}
+  verdict: rejected (no measurable improvement)

@@ -1,0 +1,41 @@
+[
+ {
+  "kind": "card",
+  "head": "Custos",
+  "sub": "Your agent can rewrite its own harness.\nIt can never grade its own homework.",
+  "foot": "Built at the Harness Engineering & Model Wrangling hackathon  ·  MongoDB Atlas  ·  github.com/sidsanc/custos",
+  "say": "Self-improving agents already cheat: o3 stubbed its own scorer. Custos lets an agent rewrite its own harness, but never grade its own homework."
+ },
+ {
+  "kind": "card",
+  "head": "MongoDB Atlas is the boundary",
+  "sub": "Agent = restricted Atlas user: read failures, insert proposals. Nothing else.\nRBAC  ·  $jsonSchema provenance  ·  change stream referee\nSealed holdout  ·  transactional promotion  ·  time-series metrics",
+  "say": "The agent is a restricted Atlas user that can only insert proposals. A privileged referee watches them through a change stream, scores each on a sealed holdout, and promotes winners in a transaction."
+ },
+ {
+  "kind": "term",
+  "title": "python redteam.py   # same credentials as the agent",
+  "file": "out_redteam.txt",
+  "say": "First, a red team with the agent's own credentials. Rewriting its harness, or reading the answer key: Atlas says not authorized. Self-acceptance, or a rule without provenance: the schema validator refuses. Deleting a guardrail, or granting write access: the referee rejects it. Seven for seven."
+ },
+ {
+  "kind": "term",
+  "title": "python agent.py 5   # honest self-improvement",
+  "file": "out_agent.txt",
+  "keep": "gen |proposes rule|verdict",
+  "say": "Then honest self-improvement. Three proposals fail to generalise and are rejected. The fourth takes the score from two to fifteen out of sixteen. The next regresses on unseen questions, and is rejected."
+ },
+ {
+  "kind": "term",
+  "title": "python retire.py   # removal is a first-class change",
+  "file": "out_retire.txt",
+  "say": "Finally, retirement ablates every rule. This one stays, because removing it hurts the sealed holdout."
+ },
+ {
+  "kind": "card",
+  "head": "Governed recursive self-improvement",
+  "sub": "Every version, verdict and score lives in MongoDB.\nEvery proposal streams to Raindrop as a self-improvement event.",
+  "foot": "github.com/sidsanc/custos",
+  "say": "Every version and verdict lives in MongoDB, and streams to Raindrop. Custos: governed recursive self-improvement."
+ }
+]
